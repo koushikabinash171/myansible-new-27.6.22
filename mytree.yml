@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install terr on nodes
+    apt:
+      name: tree
+      state: abseng
