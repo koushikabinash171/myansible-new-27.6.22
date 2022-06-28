@@ -3,14 +3,26 @@
   become: yes
   gather_facts: yes
   tasks:
-  - name:   i want to install webserver on ansible node side
+  - name:    i want to install webserver on ansible node side
     apt:
       name:  apache2
       state:  present
     when: ansible_os_family =="Debian"
 
-  - name:  i want to start webserver
+  - name:   i want to start webserver
     service:
        name: apache2
        state: started
     when: ansible_os_family =="Debian"
+
+  - name:  i want to install webserver on redhat
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family =="redhat"
+
+  - name: i want to start webserver on redhat
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family =="redhat"   
