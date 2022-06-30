@@ -1,28 +1,14 @@
 ---
-- hosts: mywebserver
+- hosts: all
   become: yes
   gather_facts: yes
   tasks:
-  - name:  i want to install webserver on ubuntu nodes
+  - name:   i want to install webserver on ubuntu nodes
     apt:
       name: apache2
       stste: present
-    when: ansible_os_family =="Debian"
 
-  - name: i want to install webserver on ubuntu nodes
+  - name:  i want to start webserver
     service:
-        name: apache2
-        state: started
-    when: ansible_os_family =="Debian"
-
-  - name: i want install webserver on RedHat
-    yum:
-      name: httpd
-      state: present
-    when: ansible_os_family =="RedHat"
-
-  - name: i want to start wbesrever on RedHat
-    service:
-      name: httpd
+      neme: apache2
       state: started
-    when: ansible_os_family =="RedHat" 
